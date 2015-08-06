@@ -109,17 +109,21 @@ local function handleReactor()
     else
       state = "Off"
     end
-    term.write("Reactor state:         " .. offset(state, offs) .. "\n", false)
+    term.write("Reactor State:         " .. offset(state, offs) .. "\n", false)
     term.clearLine()
-    term.write("Reserve level:         " .. offset(stored / maxEnergy * 100, offs) .. " %\n", false)
+    term.write("Reserve Level:         " .. offset(stored / maxEnergy * 100, offs) .. " %\n", false)
     term.clearLine()
     term.write("Current Production:    " .. offset(fancyNumber(reactor.getEnergyProducedLastTick()), offs) .. " RF/t\n", false)
     term.clearLine()
-    term.write("Fuel level:            " .. offset(fancyNumber(reactor.getFuelAmount() / reactor.getFuelAmountMax() * 100 + 1), offs) .. " %n", false)
+    term.write(Casing Temperature:     " .. offset(fancyNumber(reactor.getCasingTemperature()), offs) .. " c\n", false)
     term.clearLine()
-    term.write("Fuel reactivity:       " .. offset(fancyNumber(reactor.getFuelReactivity()), offs) .. " %\n", false)
+    term.write("Output Capacity:       " .. offset(reactor.getControlRodLevel(1), offs) .. " %\n", false)
     term.clearLine()
-    term.write("Control Rod Insertion: " .. offset(reactor.getControlRodLevel(1), offs) .. " %\n", false)
+    term.write("Fuel Level:            " .. offset(fancyNumber(reactor.getFuelAmount() / reactor.getFuelAmountMax() * 100 + 1), offs) .. " %n", false)
+    term.clearLine()
+    term.write("Fuel Reactivity:       " .. offset(fancyNumber(reactor.getFuelReactivity()), offs) .. " %\n", false)
+    term.clearLine()
+    term.write("Fuel Consumption:      " .. offset(reactor.getFuelConsumedLastTick(), offs) .. " mB/t\n", false)
     term.clearLine()
   end
 end
