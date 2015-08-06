@@ -97,7 +97,7 @@ local function handleReactor()
   local stored_pec = stored / maxEnergy * 100
 
   --Set Reactor Control Rod  based on energy stored
-  reactor.setAllControlRodLevels(stored_perc)
+  reactor.setAllControlRodLevels(stored_pec)
 
   --Write the reactor state, the currently stored energy, the percentage value and the current production rate to screen
   if not silent then
@@ -108,6 +108,7 @@ local function handleReactor()
       state = "On"
     else
       state = "Off"
+      reactor.setActive(true)
     end
     term.write("Reactor State:         " .. offset(state, offs) .. "\n", false)
     term.clearLine()
