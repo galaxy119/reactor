@@ -10,6 +10,7 @@ Author: Joker119
 
 --The maximum amount of energy a reactor can store
 local maxEnergy = 10000000
+local maxProduced = 148000
 
 --Loading the required libraries
 local component = require("component")
@@ -116,7 +117,7 @@ local function handleReactor()
     term.clearLine()
     term.write("Current Output:    " .. offset(fancyNumber(reactor.getEnergyProducedLastTick()), offs) .. " RF/t\n", false)
     term.clearLine()
-    term.write("Output Capacity:       " .. offset(100 - reactor.getControlRodLevel(1), offs) .. " %\n", false)
+    term.write("Output Capacity:       " .. offset(reactor.getEnergyProducedLastTick() / maxProduced * 100, offs) .. " %\n", false)
     term.clearLine()
     term.write("Casing Temperature:    " .. offset(fancyNumber(reactor.getCasingTemperature()), offs) .. " c\n", false)
     term.clearLine()
